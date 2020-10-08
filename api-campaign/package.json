@@ -1,0 +1,27 @@
+{
+  "name": "celeb-api-campaign",
+  "version": "1.0.0",
+  "description": "Campaign related API Service for Celeb Plus Project on AWS Lambda",
+  "scripts": {
+    "deploy": "sls deploy -v --stage $STAGE",
+    "remove": "sls remove -v --stage $STAGE",
+    "start": "sls offline start",
+    "test": "jest ./test/*.spec.js --json --outputFile=testResult.json"
+  },
+  "author": "",
+  "devDependencies": {
+    "aws-sdk": "^2.650.0",
+    "axios": "^0.19.2",
+    "ffp-js": "^0.0.21",
+    "jest": "^25.2.4",
+    "serverless-offline": "^4.7.1",
+    "serverless-offline-ssm": "^4.1.2",
+    "serverless-plugin-split-stacks": "^1.9.3",
+    "serverless-plugin-warmup": "^4.8.0"
+  },
+  "dependencies": {
+    "fxsql": "^1.3.1",
+    "moment": "^2.24.0",
+    "request": "^2.88.2"
+  }
+}

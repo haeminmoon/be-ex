@@ -1,0 +1,23 @@
+{
+  "name": "migration",
+  "version": "1.0.0",
+  "description": "for migration dynamo to postgre",
+  "main": "migration.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.471.0",
+    "crypto-js": "^3.1.9-1",
+    "ffp-js": "^0.0.21",
+    "fxsql": "^1.2.0",
+    "moment": "^2.24.0",
+    "shelljs": "^0.8.3"
+  },
+  "dependencies": {
+    "@gumlet/gif-resize": "^1.0.4",
+    "sharp": "^0.23.4"
+  }
+}

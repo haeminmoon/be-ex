@@ -1,0 +1,815 @@
+{
+	"address": "0x3DC08DCE5aa2830959Fe514aeAB9feEEB1f5dCE1",
+	"abi": [
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isWt",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x0308fecf"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getUintStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x08acb556"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				},
+				{
+					"name": "state",
+					"type": "bool"
+				}
+			],
+			"name": "updateIsAccount",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x0bf2f7d2"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_tokenAddr",
+					"type": "address"
+				},
+				{
+					"name": "_tokenName",
+					"type": "string"
+				}
+			],
+			"name": "setTokenAddr",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x16a171dd"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				}
+			],
+			"name": "getRevenueLedger",
+			"outputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"name": "influencerId",
+					"type": "uint256"
+				},
+				{
+					"name": "salesAmount",
+					"type": "uint256"
+				},
+				{
+					"name": "salesPrice",
+					"type": "uint256"
+				},
+				{
+					"name": "profit",
+					"type": "uint256"
+				},
+				{
+					"name": "revenueRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "spinRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "fiatRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "isAccount",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x18e62fb6"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getStringStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "string"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x1a84fbb8"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getBoolStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x1c58c8bb"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isAdmin",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x24d7806c"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "setAuthStorage",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x378b5d39"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "_tokenName",
+					"type": "string"
+				}
+			],
+			"name": "getBalance",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x3a51d246"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isInfluencer",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x42f00a92"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isSupplier",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x46336542"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_tokenName",
+					"type": "string"
+				},
+				{
+					"name": "_to",
+					"type": "address"
+				},
+				{
+					"name": "_amt",
+					"type": "uint256"
+				}
+			],
+			"name": "sendToken",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x4ad16656"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "_tokenName",
+					"type": "string"
+				}
+			],
+			"name": "getTokenAddr",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x6ff4206f"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				},
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"name": "influencerId",
+					"type": "uint256"
+				},
+				{
+					"name": "salesAmount",
+					"type": "uint256"
+				},
+				{
+					"name": "salesPrice",
+					"type": "uint256"
+				},
+				{
+					"name": "profit",
+					"type": "uint256"
+				},
+				{
+					"name": "revenueRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "spinRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "fiatRatio",
+					"type": "uint256"
+				}
+			],
+			"name": "createRevenueLedger",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x6ffe2c03"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getBytesStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bytes"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x773cdbd7"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "nodeId",
+					"type": "uint256"
+				}
+			],
+			"name": "doesNodeExist",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x820254a2"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "doesListExist",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x9081fd01"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getNodes",
+			"outputs": [
+				{
+					"name": "nodes",
+					"type": "uint256[]"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x93840d0f"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				},
+				{
+					"name": "nodeId",
+					"type": "uint256"
+				},
+				{
+					"name": "dir",
+					"type": "bool"
+				}
+			],
+			"name": "getAdjacent",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				},
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x9a481f4e"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				}
+			],
+			"name": "deleteRevenueLedger",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xa2fc4789"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getAddressStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xb93a5b5e"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "getAuthStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xb95ca819"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "getRevenueLedgerList",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256[]"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xbc2647db"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getLinkedListSize",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xc7db8da2"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getIntStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "int256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xe8ad272c"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "proxy",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xec556889"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				}
+			],
+			"name": "RevenueLedgerCreated",
+			"type": "event",
+			"signature": "0x5c0b13facaa7059995080d1fef1b9550c0795264b98137883cb13648e9293409"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"name": "updatedAt",
+					"type": "uint256"
+				}
+			],
+			"name": "RevenueLedgerUpdated",
+			"type": "event",
+			"signature": "0xf3d5effe6c550c05c8a9ba41a76f89df4b9a6a2e962d1a108fdca0ea714aa38a"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "_value",
+					"type": "uint256"
+				},
+				{
+					"name": "_num",
+					"type": "uint256"
+				}
+			],
+			"name": "rounding",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "pure",
+			"type": "function",
+			"signature": "0x9cd86d1f"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "_spinAmount",
+					"type": "uint256"
+				},
+				{
+					"name": "_marketPrice",
+					"type": "uint256"
+				},
+				{
+					"name": "_rounding",
+					"type": "uint256"
+				}
+			],
+			"name": "revenueSpin",
+			"outputs": [
+				{
+					"name": "spin",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "pure",
+			"type": "function",
+			"signature": "0xebc11d7a"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_revenueLedgerId",
+					"type": "uint256"
+				},
+				{
+					"name": "_to",
+					"type": "address"
+				},
+				{
+					"name": "_spinAmount",
+					"type": "uint256"
+				},
+				{
+					"name": "_marketPrice",
+					"type": "uint256"
+				},
+				{
+					"name": "_rounding",
+					"type": "uint256"
+				}
+			],
+			"name": "revenueShare",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x8e503795"
+		}
+	],
+	"version": {
+		"191002-18:16:22": "0x54E50e0646a0aA9eA29718087aB416a05E9ddE2e",
+		"191002-18:18:04": "0xBA710A8348b807ACee00A8b8894A82F05E9F6069",
+		"191002-18:22:37": "0xb2903D524516A25d2B3Eca8CA53c057b174ED8c6",
+		"191002-18:27:31": "0x519a84E17c42289CEd0484a9f0E6B3BBA00a8f91",
+		"191004-16:42:26": "0x8e092b06BEeb954FBE87D2CCa5C0A78B1Ad51fD0",
+		"191007-11:10:43": "0xCD42ec891393B1c86260394854F2589531Ac6731",
+		"191007-11:11:31": "0xa1b7a5f216525BDFeBfbB316E54C7382cBE6AA02",
+		"191007-17:51:34": "0x22E8a230590E598E9Aa3a0E3364b2B0ca356C467",
+		"191007-18:15:35": "0x125578B7D0AF0db73E2398A190B6c60511A86075",
+		"191007-18:18:16": "0x07dAF40Eb44927BBb11D5c68F742E271Eb79fc39",
+		"191007-18:19:33": "0x2e044F94A79fFEF0865037b8FE187EF3826f5cb0",
+		"191007-18:19:46": "0x1E15a40A153f49144603Fe10551AF1bbFAC66b66",
+		"191007-18:20:53": "0xdDb99c9F19B2b6323E99c7072ac2356ab917db09",
+		"191007-18:21:30": "0x2ba41f3EA8D7E088b3d9842a292d3214a64a1910",
+		"191007-18:21:44": "0x3227ab38b1cfE80d552EdD90b103b965032f6ec7",
+		"191007-18:22:05": "0x3982B87e1B00eeD2423680b2a811c4042fC1A77A",
+		"191007-18:22:55": "0x2974815c818f6D55171728e77D17b62904a58d30",
+		"191007-18:23:25": "0x9b4C26d6c272503bBE31a4750de6BAc9D61876CA",
+		"191007-18:24:31": "0xfDd8786049820Fb7AD32b959D1E8975b5CF579F0",
+		"191007-18:26:38": "0x86aD68Fe66caCf785Af2B603fB21FED302F4Dfd2",
+		"191007-18:27:18": "0x60149e9fa594394d952c631040CEA701e817B9fD",
+		"191007-18:27:55": "0xaFE764dc97cef0331C2f8ecfA7B1fB0c23116701",
+		"191007-18:28:14": "0x058E7EcAFCbfb2adc75De28E3Dd3331Bd886419F",
+		"191007-18:29:08": "0x433A9b9BDc96B90f046b5F52B26eBaf186546708",
+		"191007-18:33:56": "0x93D4Af3621Bbc2ba7953795c3b4461851FaA160c",
+		"191007-18:34:20": "0x61838e4d51B6Dc9BC273989f21439981f8BC36Fa",
+		"191007-18:34:33": "0x85A8773365Ca6BD42938bd2f860B610204fb1C83",
+		"191007-18:35:12": "0x4cbc08Be908Bd0EA967070189f4dB6946A7134b2",
+		"191007-18:35:35": "0xF53A77808a0210E46E971340B1cC352d866c9381",
+		"191007-18:36:05": "0x1835c848fC780a1F5675BbF5E691Fd8Cc3C89F92",
+		"191007-18:36:26": "0x9f89fc79839f5cd32e8806e91db7dfa604E319b6",
+		"191007-18:36:45": "0xeFF4F862AcF7d12dD25aF8a9E151dc46c425126d",
+		"191007-18:48:15": "0x9D268e7E477624eb44f300d67B37f90fA244fcAA",
+		"191010-11:53:53": "0x2Fc08f0B2A5AC7A8Dd769cE36CB87b74fD3F70AB",
+		"191014-18:10:45": "0xA2Ad6039ce000744433b1e6158136825AE7f8897",
+		"191014-18:13:16": "0x002966efb03dB8d6e019413A639758176B557E69",
+		"191014-18:43:49": "0x52682288fEB276a3A4c7cf6A909606F26A46152c",
+		"191014-18:49:31": "0x47F55F76a48983AA4C398100546Fe10fe3157707",
+		"191014-18:49:49": "0xe03E9a9bd552e0C0Aed26fdC0b8a8c562CA3EbAb",
+		"191014-18:50:50": "0xa7c02142B7A891E58759938A758526Ec62653dFa",
+		"191014-18:51:14": "0xA228127299258bcadcCC5440e59759c92b0316bE",
+		"191014-19:34:16": "0x9D4a5d3A3698894FA7BF54Bf16d85dfe3471EBB3",
+		"191014-19:36:26": "0x26AaA9644A2AD265a0fC4Ce25BD9C0EeD61Cf86e",
+		"191016-14:59:09": "0xF684ba01FC19310361c25b45624e77d2AFDa3b86",
+		"191016-15:01:02": "0xd3bD211F1350DA734B81dFad21bfF30aE85a03F0",
+		"191016-17:23:56": "0xa03036985D45B377BFfC7743777a0cc71AD99f4E",
+		"191029-15:19:10": "0x9807F24E63eafCb740b3476E5a6b351FFDD53fC7",
+		"191029-15:20:21": "0x83af964ccc47DC6D92886A865BCf8F8e7dE72053",
+		"191029-15:20:45": "0xe7C6c381F4aD5Fc65c01460f923Aa0538BeF8A30",
+		"191029-15:24:19": "0x008065E9538D8D323a17Fd13Ac37146EC16fE28D",
+		"191029-15:29:54": "0x5E156dFf17e1B41161B88a0C9E69699A6A557570",
+		"191029-15:30:40": "0x6b5D9b40B8a7E301915Eeb8853B2d1F2603Ccf6B",
+		"191029-15:31:03": "0x7762bBF7E45965D030B09862665188B73a0F1001",
+		"191029-15:31:37": "0x9C433F6D077c0155a685ea257e5CffCde13ebab9",
+		"191029-15:31:50": "0x4d48dc1c4035e6c7C050050E068b3945228e27ED",
+		"191029-15:32:07": "0x133f641922A18901eaccE3680Ac38Bf96327004A",
+		"191029-15:36:28": "0x419Ef4aAEb21a3CcAC1D20abd2C7072D1bA1b43B",
+		"191029-15:37:52": "0x1f6e16082C36210EfB650E7fF123Eb06D7c6cB15",
+		"191029-15:38:24": "0xa25E47E9D97C8f527542e785e85790C0EaB07bAC",
+		"191029-15:38:39": "0x7573f46B435eBADc517c16CBF1Ad912b6B1BbFfF",
+		"191029-15:39:12": "0x76AEd7A1c3341F6978D891b1918B962755Dbd410",
+		"191030-11:18:03": "0x34854fd5a68AB127a4b8D92F77e3DD629CB2212d",
+		"191108-11:58:30": "0xd3d0cD899f19a7409Ffa4087BB20b8B735E0a162"
+	}
+}

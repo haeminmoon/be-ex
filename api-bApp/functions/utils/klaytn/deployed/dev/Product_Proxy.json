@@ -1,0 +1,134 @@
+{
+	"address": "0x899d3977E1DD26A4Ed35f90d3fE3DEA88988C6B7",
+	"abi": [
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "proxyOwner",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x025313a2"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "version",
+			"outputs": [
+				{
+					"name": "",
+					"type": "string"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x54fd4d50"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "version",
+					"type": "string"
+				},
+				{
+					"name": "implementation",
+					"type": "address"
+				}
+			],
+			"name": "upgradeTo",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x5a8b1a9f"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "implementation",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x5c60da1b"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "newOwner",
+					"type": "address"
+				}
+			],
+			"name": "transferProxyOwnership",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xf1739cae"
+		},
+		{
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "fallback"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"name": "version",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"name": "implementation",
+					"type": "address"
+				}
+			],
+			"name": "Upgraded",
+			"type": "event",
+			"signature": "0x8e05e0e35ff592971ca8b477d4285a33a61ded208d644042667b78693a472f5e"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"name": "previousOwner",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"name": "newOwner",
+					"type": "address"
+				}
+			],
+			"name": "ProxyOwnershipTransferred",
+			"type": "event",
+			"signature": "0x5a3e66efaa1e445ebd894728a69d6959842ea1e97bd79b892797106e270efcd9"
+		}
+	],
+	"version": {
+		"191002-18:13:34": "0x2c8E9b035749F977BE33DD501dBdE64723388A5A",
+		"191002-18:15:28": "0x4dA5C515Dc5cfAd38E8C340da70adadC1e67990e",
+		"191002-18:18:58": "0xd78ef84F03046b5A30b461A9F5189DC670F1A31f",
+		"191002-18:20:39": "0x883988f8eF38A0038DFD458a5E094B2e872CE0d2",
+		"191002-18:27:01": "0x8E611F648FAa87BcCA77Bd95B63F4F4A8667c491",
+		"191004-16:41:54": "0xe7ECf48b50918F82A1E54B3815a91568d1F94723",
+		"191014-19:33:45": "0x899d3977E1DD26A4Ed35f90d3fE3DEA88988C6B7"
+	}
+}

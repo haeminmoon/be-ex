@@ -1,0 +1,1909 @@
+openapi: 3.0.0
+
+info:
+  title: Celeb Plus API
+  description: celeb protocol celeb web site [https://api.celebplus.io](https://celebplus.io).
+  version: 0.0.0
+  contact:
+    name: Celebplus
+    email: dev@celebplus.io
+
+servers:
+  # - url: https://api.celebplus.io
+  #   description: Production server url
+  - url: https://api.celebplus.io
+    description: Develop(dev) server url for testing
+
+paths:
+# -------------------------------------------------------------------
+# /users
+# -------------------------------------------------------------------
+  /user/create_user:
+    post:
+      tags:
+      - user
+      summary: create user in DB.
+      description: there is not authority required.
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/CreateUser"
+      responses:
+        '200':
+          description: Create user success in DB.
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/get_influencer_list:
+    get:
+      tags:
+      - user
+      summary: get list of influencer infomation.
+      description: there is need administrator privileges.
+      security:
+        - adminAuth: ['admin']
+      responses:
+        '200':
+          description: Returns a list of influencer infomation.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: { type: object }
+              example: [ { id: a }, { id: b }, { id: c } ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/get_influencer_list_paging:
+    get:
+      tags:
+      - user
+      summary: get list of influencer infomation for paging.
+      description: there is need administrator privileges.
+      security:
+        - adminAuth: ['admin']
+      parameters:
+        - $ref: "#/components/parameters/count"
+        - $ref: "#/components/parameters/page"
+      responses:
+        '200':
+          description: Returns a list of influencer infomation for paging.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: { type: object }
+              example: [ { id: a }, { id: b }, { id: c } ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/get_user:
+    get:
+      tags:
+      - user
+      summary: get a user infomation by id.
+      description: there is need user privileges.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        '200':
+          description: Returns that user infomation.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: { type: object }
+              example: [ { id: a } ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/get_user_nickname:
+    get:
+      tags:
+      - user
+      summary: get user infomation by nickname.
+      description: there is need user privileges.
+      parameters:
+        - $ref: "#/components/parameters/nickname"
+      responses:
+        '200':
+          description: Returns the user infomation with the same nickname.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: { type: object }
+              example: [ { id: a, nickname: a }, { id: b, nickname: a } ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/get_user_list:
+    get:
+      tags:
+      - user
+      summary: get user infomation by nickname.
+      description: there is need administrator privileges.
+      security:
+        - adminAuth: ['admin']
+      responses:
+        '200':
+          description: Returns list of user infomation.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: { type: object }
+              example: [ { id: a }, { id: b } ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/search_influencer:
+    get:
+      tags:
+      - user
+      summary: get user information that matches the specified string
+      description: there is need administrator privileges.
+      parameters:
+        - $ref: "#/components/parameters/searchTerm"
+      security:
+        - adminAuth: ['admin']
+      responses:
+        '200':
+          description: Returns list of user infomation that matches the specified string.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: { type: object }
+              example: [ { id: specified string, nickname: x }, { id: b, name: specified string }, { id: c, nickname: specified string } ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/get_influencer_rank_list:
+    get:
+      tags:
+      - user
+      summary: get orderd user information by rank.
+      description: there is need administrator privileges.
+      security:
+        - adminAuth: ['admin']
+      responses:
+        '200':
+          description: Returns list of user infomation orderd by rank.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: { type: object }
+              example: [ { id: a, rank: 1 }, { id: b, rank: 2 }, { id: c, rank: 3 } ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/update_user_info:
+    put:
+      tags:
+      - user
+      summary: update user infomation.
+      description: there is need user privileges.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserInfo"
+      security:
+        - userAuth: ['user']
+      responses:
+        '200':
+          description: Success update user infomation.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /user/update_user_rank:
+    put:
+      tags:
+      - user
+      summary: update user rank.
+      description: there is need administrator privileges.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserRank"
+      security:
+        - adminAuth: ['admin']
+      responses:
+        '200':
+          description: Success update user rank.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+# campaign
+# -------------------------------------------------------------------
+  /campaign/create_campaign:
+    post:
+      tags:
+      - campaign
+      summary: create campaign in DB.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCampaign"
+      responses:
+        '200':
+          description: Create campaign success in DB.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign:
+    get:
+      tags:
+      - campaign
+      summary: get a campaign detail infomation.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/campaignId"
+      responses:
+        '200':
+          description: Returns a campaign detail infomation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "b",
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign_list:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "b",
+                  hash_tag: "..."
+                },
+                {
+                  id: "b",
+                  name: "c",
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign_list_by_user:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation by user.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/campaignUserId"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation by user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "b",
+                  hash_tag: "..."
+                },
+                {
+                  id: "b",
+                  name: "c",
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign_list_paging:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation for paging.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/count"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation for paging.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "b",
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign_count:
+    get:
+      tags:
+      - campaign
+      summary: get total counts of campaign.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      responses:
+        '200':
+          description: Returns total campaign counts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  "totalcount": "3",
+                  "waitingcount": "3",
+                  "progresscount": "0",
+                  "completecount": "0"
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign_list_paging_by_state:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation in specific state for paging.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/count"
+        - $ref: "#/components/parameters/campaignState"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation in specific state for paging.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "b",
+                  state: "waiting",
+                  hash_tag: "..."
+                },
+                {
+                  id: "b",
+                  name: "c",
+                  state: "waiting",
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign_list_paging_by_search_term:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation include specific terms for paging.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/count"
+        - $ref: "#/components/parameters/searchTerm"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation include specific terms for paging.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "bbb",
+                  state: "waiting",
+                  hash_tag: "..."
+                },
+                {
+                  id: "d",
+                  name: "bbc",
+                  state: "progress",
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_applied_campaign_list_paging_by_search_term:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation include specific terms for paging.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/count"
+        - $ref: "#/components/parameters/searchTerm"
+        - $ref: "#/components/parameters/campaignUserId"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation include specific terms for paging.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "bbb",
+                  applied_influencers: ['a', 'b'],
+                  hash_tag: "..."
+                },
+                {
+                  id: "b",
+                  name: "cbb",
+                  applied_influencers: ['a', 'c'],
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_campaign_list_paging_by_search_date:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation include date term for paging.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/count"
+        - $ref: "#/components/parameters/campaignStartDate"
+        - $ref: "#/components/parameters/campaignEndDate"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation include date term for paging.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "bbb",
+                  hash_tag: "..."
+                },
+                {
+                  id: "d",
+                  name: "bbc",
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_applied_campaign_list:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation by applied user id.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/campaignUserId"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation by applied user id.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "b",
+                  applied_influencers: ['a', 'b'],
+                  hash_tag: "..."
+                },
+                {
+                  id: "b",
+                  name: "c",
+                  applied_influencers: ['a', 'c'],
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_applied_campaign_count:
+    get:
+      tags:
+      - campaign
+      summary: get total counts of campaign.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/campaignUserId"
+      responses:
+        '200':
+          description: Returns total campaign counts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  "totalcount": "3",
+                  "waitingcount": "3",
+                  "progresscount": "0",
+                  "completecount": "0"
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/get_applied_campaign_list_paging_by_state:
+    get:
+      tags:
+      - campaign
+      summary: get a list campaign detail infomation in specific state for paging.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/count"
+        - $ref: "#/components/parameters/campaignState"
+        - $ref: "#/components/parameters/campaignUserId"
+      responses:
+        '200':
+          description: Returns a list campaign detail infomation in specific state for paging.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object }
+              example: [
+                {
+                  id: "a",
+                  name: "bbb",
+                  state: "waiting",
+                  applied_influencers: ['a', 'c'],
+                  hash_tag: "..."
+                },
+                {
+                  id: "d",
+                  name: "bbc",
+                  state: "progress",
+                  applied_influencers: ['a', 'c'],
+                  hash_tag: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_applied_influencer:
+    put:
+      tags:
+      - campaign
+      summary: update applied influencer in campaign.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateAppliedInfluencer"
+      responses:
+        '200':
+          description: Success update a applied influencer.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_comment:
+    put:
+      tags:
+      - campaign
+      summary: update applied influencer comment in campaign.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateComment"
+      responses:
+        '200':
+          description: Success update comment in campaign.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_postingUrl:
+    put:
+      tags:
+      - campaign
+      summary: update applied influencer posting url in campaign.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updatePostingUrl"
+      responses:
+        '200':
+          description: Success update posting url in campaign.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_influencer_check:
+    put:
+      tags:
+      - campaign
+      summary: update applied influencer posting state url in campaign.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateInfluencerCheck"
+      responses:
+        '200':
+          description: Success update posting state in campaign.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_influencer_is_posting:
+    put:
+      tags:
+      - campaign
+      summary: update applied influencer posting url in campaign.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateInfluecnerPosting"
+      responses:
+        '200':
+          description: Success update posting in campaign.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_main_influencer:
+    put:
+      tags:
+      - campaign
+      summary: update main influencer in campaign.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateMainInfluencer"
+      responses:
+        '200':
+          description: Success update main influencer in campaign.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_sale_start:
+    put:
+      tags:
+      - campaign
+      summary: update campaign state 'progress'.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateSaleStart"
+      responses:
+        '200':
+          description: Success update campaign state.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_sale_end:
+    put:
+      tags:
+      - campaign
+      summary: update campaign state 'complete'.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateSaleEnd"
+      responses:
+        '200':
+          description: Success update campaign state.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_cancel_influencer:
+    put:
+      tags:
+      - campaign
+      summary: update campaign applied influencer cancel.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateCancelInfluencer"
+      responses:
+        '200':
+          description: Success update applied influencer cancel.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/update_campaign:
+    put:
+      tags:
+      - campaign
+      summary: update campaign.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateCampaign"
+      responses:
+        '200':
+          description: Success update campaign.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /campaign/delete_campaign:
+    delete:
+      tags:
+      - campaign
+      summary: delete campaign.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      parameters:
+        - $ref: "#/components/parameters/campaignId"
+      responses:
+        '200':
+          description: Success delete.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+# /notice
+# -------------------------------------------------------------------
+  /notice/create_notice:
+    post:
+      tags:
+      - notice
+      summary: create notice.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/createNotice"
+      responses:
+        '200':
+          description: Success create notice and Return notice id.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  id: 19
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notice/get_notice:
+    get:
+      tags:
+      - notice
+      summary: get notice.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/noticeId"
+      responses:
+        '200':
+          description: Success get notice by id.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  id: 19,
+                  title: test,
+                  content: test
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notice/get_notice_list:
+    get:
+      tags:
+      - notice
+      summary: get notice list.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      responses:
+        '200':
+          description: Success get notice list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  id: 1,
+                  title: "..."
+                },
+                {
+                  id: 2,
+                  title: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notice/get_notice_list_for_paging:
+    get:
+      tags:
+      - notice
+      summary: get notice list for paging.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/count"
+        - $ref: "#/components/parameters/page"
+      responses:
+        '200':
+          description: Success get notice list for paging.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  id: 1,
+                  title: "..."
+                },
+                {
+                  id: 2,
+                  title: "..."
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notice/get_notice_list_for_count:
+    get:
+      tags:
+      - notice
+      summary: get notice count.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      responses:
+        '200':
+          description: Success get notice count.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  count: "16"
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notice/update_notice:
+    put:
+      tags:
+      - notice
+      summary: update notice.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/updateNotice"
+      responses:
+        '200':
+          description: Success update notice.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notice/delete_notice:
+    delete:
+      tags:
+      - notice
+      summary: delete notice.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      parameters:
+        - $ref: "#/components/parameters/noticeId"
+      responses:
+        '200':
+          description: Success delete notice.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+# /notification
+# -------------------------------------------------------------------
+  /notification/create_notification:
+    post:
+      tags:
+      - notification
+      summary: create notification.
+      description: there is administrator authority required.
+      security:
+        - adminAuth: ['admin']
+      requestBody:
+        content:
+          application/json:
+              schema:
+                $ref: "#/components/schemas/createNotification"
+      responses:
+        '200':
+          description: Success create notification.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  id: 19
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notification/get_notification_list:
+    get:
+      tags:
+      - notification
+      summary: get notification list by id.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/notificationUserId"
+      responses:
+        '200':
+          description: Success get notification list by id.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  id: 1,
+                  title: "test notification1",
+                  receiver: [ { id: a }, { id: b }, { id: c } ]
+                },
+                {
+                  id: 2,
+                  title: "test notification2",
+                  receiver: [ { id: a }, { id: d }, { id: e } ]
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notification/get_notification_list_paging:
+    get:
+      tags:
+      - notification
+      summary: get notification list for paging by id.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/notificationUserId"
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/count"
+      responses:
+        '200':
+          description: Success get notification list for paging by id.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  id: 1,
+                  title: "test notification1",
+                  receiver: [ { id: a }, { id: b }, { id: c } ]
+                },
+                {
+                  id: 2,
+                  title: "test notification2",
+                  receiver: [ { id: a }, { id: d }, { id: e } ]
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notification/get_notification_list_check_count:
+    get:
+      tags:
+      - notification
+      summary: get notification list check count by id.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/notificationUserId"
+      responses:
+        '200':
+          description: Success get notification list check count by id.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  count: "4"
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notification/get_notification_list_count:
+    get:
+      tags:
+      - notification
+      summary: get notification list count by id.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      parameters:
+        - $ref: "#/components/parameters/notificationUserId"
+      responses:
+        '200':
+          description: Success get notification list count by id.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+              example: [
+                {
+                  count: "4"
+                }
+              ]
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notification/update_notification_check:
+    put:
+      tags:
+      - notification
+      summary: update notification check state.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/updateNotificationCheck"
+      responses:
+        '200':
+          description: Success update notification check state.
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+  /notification/update_remove_notification:
+    put:
+      tags:
+      - notification
+      summary: specific user's notification remove.
+      description: there is user authority required.
+      security:
+        - userAuth: ['user']
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/updateRemoveNotification"
+      responses:
+        '200':
+          description: Success update notification that receiver column remove specific user id
+        '401':
+          $ref: "#/components/responses/default401Error"
+        '500':
+          $ref: "#/components/responses/default500Error"
+        '502':
+          $ref: "#/components/responses/internalServerError"
+# -------------------------------------------------------------------
+# -------------------------------------------------------------------
+
+components:
+  securitySchemes:
+    adminAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    userAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+  parameters:
+    count:
+      in: query
+      name: count
+      schema:
+        type: integer
+        default: 1
+      example: 1
+      description: Page unit count
+    page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        default: 0
+      example: 0
+      description: Page count
+    id:
+      in: query
+      name: id
+      schema:
+        type: string
+        default: null
+      example: test@celebplus.io
+      description: User id
+    nickname:
+      in: query
+      name: nickname
+      schema:
+        type: string
+        default: null
+      example: test
+      description: User nickname
+    searchTerm:
+      in: query
+      name: search_term
+      schema:
+        type: string
+        default: null
+      example: test
+      description: String to find
+    campaignId:
+      in: query
+      name: id
+      schema:
+        type: string
+        default: null
+      example: "123123123"
+      description: Campaign id
+    campaignUserId:
+      in: query
+      name: user_id
+      schema:
+        type: string
+        default: null
+      description: User id
+    campaignState:
+      in: query
+      name: state
+      schema:
+        type: string
+        default: waiting
+      description: Campaign state
+    campaignStartDate:
+      in: query
+      name: startDate
+      schema:
+        type: string
+        default: "2018-05-10"
+      description: Campaign start date
+    campaignEndDate:
+      in: query
+      name: endDate
+      schema:
+        type: string
+        default: "2018-05-13"
+      description: Campaign end date
+    noticeId:
+      in: query
+      name: id
+      schema:
+        type: string
+        default: null
+      description: Notice id
+    notificationUserId:
+      in: query
+      name: user_id
+      schema:
+        type: string
+        default: "test@celebplus.io"
+      description: User id
+  schemas:
+    # user
+    CreateUser:
+      properties:
+        id: { type: string }
+        user_info: { type: object }
+        auth: { type: string }
+        created_at: { type: string }
+        updated_at: { type: string }
+      example: {
+        id: "test11@celebplus.io",
+        user_info: {
+          "name": "test",
+          "nickname": "test",
+          "rank": 100000,
+          "instagram_info": {},
+          "bank_info": {},
+          "shop_info": {}
+        },
+        auth: "influencer",
+        is_active: true,
+        created_at: null,
+        updated_at: null
+      }
+      required: [ id, user_info, auth, is_active, created_at ]
+    UpdateUserInfo:
+      properties:
+        id: { type: string }
+        user_info: { type: object }
+        updated_at: { type: string }
+      example: {
+        id: "test11@celebplus.io",
+        user_info: {
+          "name": "test",
+          "nickname": "test",
+          "rank": 100000,
+          "instagram_info": {},
+          "bank_info": {},
+          "shop_info": {}
+        },
+        updated_at: null
+      }
+    UpdateUserRank:
+      properties: 
+        users: 
+          type: array
+          items:
+            type: object
+            properties: { id: { type: string }, rank: { type: integer } }
+      example: {
+        users: [
+          {
+            id: "test11@celebplus.io",
+            rank: 1
+          },
+          {
+            id: "test@celebplus.io",
+            rank: 2
+          }
+        ]
+      }
+    # campaign
+    CreateCampaign:
+      properties: 
+        id: { type: string }
+        type: { type: string }
+        name: { type: string }
+        gender: { type: string }
+        hash_tag: { type: string }
+        product_code: { type: string }
+        revenue_ratio: { type: integer }
+        product_price: { type: integer }
+        apply_start_date: { type: string }
+        apply_end_date: { type: string }
+        sale_start_date: { type: string }
+        sale_end_date: { type: string }
+        shipping_date: { type: string }
+        campaign_description: { type: string }
+        mission_description: { type: string }
+        limit_count: { type: integer }
+        offer: { type: string }
+        guide: { type: string }
+        state: { type: string }
+        main_img: { type: string }
+        created_at: { type: string }
+        updated_at: { type: string }
+      example: {
+        id: "123123123",
+        type: "FCFS",
+        name: "test",
+        gender: "all",
+        hash_tag: "#test #campaign",
+        product_code: "123123",
+        revenue_ratio: 10,
+        product_price: 10000,
+        apply_start_date: "2019-05-13",
+        apply_end_date: "2019-05-13",
+        sale_start_date: "2019-05-13",
+        sale_end_date: "2019-05-13",
+        shipping_date: "2019-05-13",
+        campaign_description: "test description",
+        mission_description: "test mission description",
+        limit_count: 10,
+        offer: "offer test",
+        guide: "test guid",
+        state: "waiting",
+        main_img: null,
+        created_at: null,
+        updated_at: null,
+      }
+    updateAppliedInfluencer:
+      properties:
+        id: { type: string }
+        applied_influencers: { type: array, items: { type: object } }
+        updated_at: { type: string }
+      required: [ 'id', 'applied_influencers' ]
+      example: {
+        id: 6,
+        applied_influencers: {
+          id: "test@celebplus.io",
+          memo: "test memo",
+          name: "test",
+          phone: "01012341234",
+          address: "test address",
+          nickname: "test",
+          post_code: "1234",
+          posting_url: "1234",
+          detail_address: "test detail address",
+          product_comment: "1234",
+          business_account: {
+            username: "test"
+          },
+          influencer_comment: "1234"
+        },
+        updated_at: "2019-05-14"
+      }
+    updateComment:
+      properties:
+        id: { type: string }
+        index: { type: integer }
+        product_comment: { type: string }
+        influencer_comment: { type: string }
+        updated_at: { type: string }
+      required: [ 'id', 'index' ]
+      example: {
+        id: 6,
+        index: 0,
+        product_comment: "test comment... is updated",
+        influencer_comment: "test influecer comment... is updated",
+        updated_at: "2019-05-14"
+      }
+    updatePostingUrl:
+      properties:
+        id: { type: string }
+        index: { type: integer }
+        posting_url: { type: string }
+        updated_at: { type: string }
+      required: [ 'id', 'index' ]
+      example: {
+        id: 6,
+        index: 0,
+        posting_url: "posting url... is updated",
+        updated_at: "2019-05-14"
+      }
+    updateInfluencerCheck:
+      properties:
+        id: { type: string }
+        index: { type: integer }
+        is_check: { type: boolean }
+        updated_at: { type: string }
+      required: [ 'id', 'index' ]
+      example: {
+        id: 6,
+        index: 0,
+        is_check: true,
+        updated_at: "2019-05-14"
+      }
+    updateInfluecnerPosting:
+      properties:
+        id: { type: string }
+        index: { type: integer }
+        is_posting: { type: boolean }
+        updated_at: { type: string }
+      required: [ 'id', 'index' ]
+      example: {
+        id: 6,
+        index: 0,
+        is_posting: true,
+        updated_at: "2019-05-14"
+      }
+    updateMainInfluencer:
+      properties:
+        id: { type: string }
+        index: { type: integer }
+        influencer_id: { type: string }
+        updated_at: { type: string }
+      required: [ 'id', 'index', 'influencer_id' ]
+      example: {
+        id: 6,
+        index: 0,
+        influencer_id: test@celebplus.io,
+        updated_at: "2019-05-14"
+      }
+    updateSaleStart:
+      properties:
+        id: { type: string }
+        updated_at: { type: string }
+      required: [ 'id' ]
+      example: {
+        id: 6,
+        updated_at: "2019-05-14"
+      }
+    updateSaleEnd:
+      properties:
+        id: { type: string }
+        updated_at: { type: string }
+      required: [ 'id' ]
+      example: {
+        id: 6,
+        updated_at: "2019-05-14"
+      }
+    updateCancelInfluencer:
+      properties:
+        id: { type: string }
+        index: { type: integer }
+        updated_at: { type: string }
+      required: [ 'id', 'index' ]
+      example: {
+        id: 6,
+        index: 0,
+        updated_at: "2019-05-14"
+      }
+    updateCampaign:
+      properties:
+        id: { type: string }
+        type: { type: string }
+        name: { type: string }
+        revenue_ratio: { type: integer }
+        product_code: { type: string }
+        gender: { type: string }
+        limit_count: { type: integer }
+        product_price: { type: integer }
+        main_img: { type: string }
+        hash_tag: { type: string }
+        apply_start_date: { type: string }
+        apply_end_date: { type: string }
+        shipping_date: { type: string }
+        sale_start_date: { type: string }
+        sale_end_date: { type: string }
+        campaign_description: { type: string }
+        mission_description: { type: string }
+        offer: { type: string }
+        guide: { type: string }
+        updated_at: { type: string }
+        notice: { type: string }
+      example: {
+        id: 6,
+        type: "FCFS", 
+        name: "name... is update",
+        revenue_ratio: 11,
+        product_code: "product_code... is update",
+        gender: "all",
+        limit_count: 10,
+        product_price: 10001,
+        main_img: "main_img... is update",
+        hash_tag: "#hash_tag #is_update",
+        apply_start_date: "2019-05-03",
+        apply_end_date: "2019-05-08",
+        shipping_date: "2019-05-12",
+        sale_start_date: "2019-05-10",
+        sale_end_date: "2019-05-20",
+        campaign_description: "campaign_description... is update",
+        mission_description: "mission description... is update",
+        offer: offer,
+        guide: "guid... is update",
+        updated_at: null,
+        notice: "notice... is update"
+      }
+    # notice
+    createNotice:
+      properties:
+        title: { type: string }
+        content: { type: string }
+        created_at: { type: string }
+        updated_at: { type: string }
+      required: [ 'title', 'content' ]
+      example: {
+        title: "test",
+        content: "test",
+        created_at: null,
+        updated_at: null
+      }
+    updateNotice:
+      properties:
+        id: { type: string }
+        title: { type: string }
+        content: { type: string }
+        updated_at: { type: string }
+      required: [ 'id', 'title', 'content' ]
+      example: {
+        id: 19,
+        title: "test... is updated",
+        content: "test... is updated",
+        updated_at: "2019-05-15"
+      }
+    # notification
+    createNotification:
+      properties:
+        content: { type: string }
+        icon: { type: string }
+        property: { type: string }
+        property_value: { type: string }
+        receiver: { type: array, items: { type: object } }
+        created_at: { type: string }
+      required: [ 'content', 'property', 'created_at' ]
+      example: {
+        content: "test notification",
+        icon: null,
+        property: "campaign",
+        property_value: 12,
+        receiver: [{ id: "test@celebplus.io" }],
+        created_at: "2019-05-15"
+      }
+    updateNotificationCheck:
+      properties:
+        id: { type: integer }
+        index: { type: integer }
+        is_check: { type: boolean }
+        updated_at: { type: string }
+      required: [ 'id', 'index' ]
+      example: {
+        id: 29,
+        index: 0,
+        is_check: true,
+        updated_at: "2019-05-15"
+      }
+    updateRemoveNotification:
+      properties:
+        id: { type: integer }
+        index: { type: integer }
+        updated_at: { type: string }
+      required: [ 'id', 'index' ]
+      example: {
+        id: 29,
+        index: 0,
+        updated_at: "2019-05-15"
+      }
+
+    Status:
+      properties:
+        status: { type: boolean }
+      required: [ status ]
+    Unauthorized:
+      properties:
+        message: { type: string }
+      example: { message: "Unauthorized" }
+    Error:
+      properties:
+        status: { type: boolean }
+        message: { type: string }
+      example:
+        status: false
+        message: error message
+  responses:
+    default500Error: 
+      description: Execute Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    default401Error:
+      description: Unauthorized to access this api.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Unauthorized"
+    internalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            properties:
+              message: { type: string }
+            example:
+              messgae: Internal server error

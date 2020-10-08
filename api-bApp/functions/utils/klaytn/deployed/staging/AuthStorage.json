@@ -1,0 +1,135 @@
+{
+	"address": "0x3Aa8Ff2977c8cB73A48823A4E950c7Eb82A5fFA2",
+	"abi": [
+		{
+			"inputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "constructor",
+			"signature": "constructor"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "AuthAdded",
+			"type": "event",
+			"signature": "0xeb6c0bd4e88fc8503513ec783a4e212650c906745cb5c13e14793c8d66f684c6"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "AuthRemoved",
+			"type": "event",
+			"signature": "0xce7c1775211c3df3504b0484a2ca1c2b935c030d528bd99e37c4aa6370e2d47c"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isAuth",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x5c863a24"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "addAuth",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x59ebee83"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "accounts",
+					"type": "address[]"
+				}
+			],
+			"name": "addAuths",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xf0744d9f"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "removeAuth",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xce67635c"
+		}
+	],
+	"version": {
+		"191014-19:39:12": "0x98Ee41f65772440708643bD01FbF306dA6C4fa70",
+		"191015-18:21:38": "0x852a59Fdb8a51c75DB67888246c0eb5845F740ab",
+		"191016-15:01:57": "0x5Fb5C730C1C7626c9BE642FB66ca4f52ad6D3c68",
+		"191016-17:23:17": "0x3Aa8Ff2977c8cB73A48823A4E950c7Eb82A5fFA2"
+	}
+}

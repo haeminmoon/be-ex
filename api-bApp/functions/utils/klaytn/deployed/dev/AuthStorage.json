@@ -1,0 +1,147 @@
+{
+	"address": "0xA8f0a209EC0883123A6A5A46E4a4d084bc8a2E85",
+	"abi": [
+		{
+			"inputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "constructor",
+			"signature": "constructor"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "AuthAdded",
+			"type": "event",
+			"signature": "0xeb6c0bd4e88fc8503513ec783a4e212650c906745cb5c13e14793c8d66f684c6"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "AuthRemoved",
+			"type": "event",
+			"signature": "0xce7c1775211c3df3504b0484a2ca1c2b935c030d528bd99e37c4aa6370e2d47c"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isAuth",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x5c863a24"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "addAuth",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x59ebee83"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "accounts",
+					"type": "address[]"
+				}
+			],
+			"name": "addAuths",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xf0744d9f"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "auth",
+					"type": "string"
+				},
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "removeAuth",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xce67635c"
+		}
+	],
+	"version": {
+		"191014-18:21:13": "0x4935faC645E675cF9F5B3C26Ea590B91034240ed",
+		"191014-18:26:07": "0x62c2D52f60ff2244f52A3534607623f9a4Ed295e",
+		"191014-18:26:24": "0x3809B44805e097051EaFCA3691726876006CD7f1",
+		"191014-18:27:02": "0x1EEfee0e909dd6Ac6811f2C3c0b283F495C48148",
+		"191014-18:28:46": "0x7b8DBBE65f4E239A0FcF0B36A763474fd2620e5e",
+		"191014-18:30:03": "0xEf5556E59A276c3ffe83C46Eb6FadAa431621728",
+		"191014-18:31:09": "0x1711C911752B64459a5283342b20855818841cee",
+		"191014-18:32:31": "0x31B705302A1bEccdA4d6C871106FC582E054FaC1",
+		"191014-18:32:47": "0x22Bd6A31883ED13480D167B7605C761D65ae3E36",
+		"191014-18:33:24": "0xa6ddd3043b9dd4Ec6697AeE3d4C0a1A187139279",
+		"191014-18:37:25": "0x6F668815e94eFF3349809258fF13f9F518298672",
+		"191014-18:37:46": "0x3d11A3eFF73A3441C84010c64d34b99aAd8591D3",
+		"191015-18:18:58": "0x17Ea155A4734c0bb81577f2A3C95c1781520e0CD",
+		"191016-15:00:36": "0xC39BFab9016Ff4e80126c2A1fDbA3621e60F9f43",
+		"191016-17:18:35": "0xa478BB920cdb2Df611114DAF4C8CEE322baE0B01",
+		"191016-17:20:42": "0xA8f0a209EC0883123A6A5A46E4a4d084bc8a2E85"
+	}
+}

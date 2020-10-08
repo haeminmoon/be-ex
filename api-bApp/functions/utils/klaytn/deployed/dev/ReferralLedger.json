@@ -1,0 +1,630 @@
+{
+	"address": "0xBeC76AEcf0b57f9bC2e019d047571E98C769D574",
+	"abi": [
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isWt",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x0308fecf"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getUintStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x08acb556"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_tokenAddr",
+					"type": "address"
+				},
+				{
+					"name": "_tokenName",
+					"type": "string"
+				}
+			],
+			"name": "setTokenAddr",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x16a171dd"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getStringStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "string"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x1a84fbb8"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getBoolStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x1c58c8bb"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isAdmin",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x24d7806c"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "setAuthStorage",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x378b5d39"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "_tokenName",
+					"type": "string"
+				}
+			],
+			"name": "getBalance",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x3a51d246"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isInfluencer",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x42f00a92"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isSupplier",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x46336542"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_tokenName",
+					"type": "string"
+				},
+				{
+					"name": "_to",
+					"type": "address"
+				},
+				{
+					"name": "_amt",
+					"type": "uint256"
+				}
+			],
+			"name": "sendToken",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x4ad16656"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "_tokenName",
+					"type": "string"
+				}
+			],
+			"name": "getTokenAddr",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x6ff4206f"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getBytesStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bytes"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x773cdbd7"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "nodeId",
+					"type": "uint256"
+				}
+			],
+			"name": "doesNodeExist",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x820254a2"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "doesListExist",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x9081fd01"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getNodes",
+			"outputs": [
+				{
+					"name": "nodes",
+					"type": "uint256[]"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x93840d0f"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				},
+				{
+					"name": "nodeId",
+					"type": "uint256"
+				},
+				{
+					"name": "dir",
+					"type": "bool"
+				}
+			],
+			"name": "getAdjacent",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				},
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x9a481f4e"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getAddressStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xb93a5b5e"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "getAuthStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xb95ca819"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getLinkedListSize",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xc7db8da2"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getIntStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "int256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xe8ad272c"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "proxy",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xec556889"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "referralLedgerId",
+					"type": "uint256"
+				},
+				{
+					"indexed": true,
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				},
+				{
+					"indexed": true,
+					"name": "toReferralUser",
+					"type": "string"
+				}
+			],
+			"name": "ReferralLedgerCreated",
+			"type": "event",
+			"signature": "0xf8affb64aa72fbb55189688c6a52a6e45cfbc0ea55ff5786d343f4841c439e8e"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "referralLedgerId",
+					"type": "uint256"
+				}
+			],
+			"name": "ReferralLedgerDeleted",
+			"type": "event",
+			"signature": "0x247691577613b0a8ef1ced2906cb9718559bebdbed6eb50be0c292b54daae67e"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "referralLedgerId",
+					"type": "uint256"
+				},
+				{
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				},
+				{
+					"name": "amount",
+					"type": "uint256"
+				},
+				{
+					"name": "fromReferralUser",
+					"type": "string"
+				},
+				{
+					"name": "toReferralUser",
+					"type": "string"
+				}
+			],
+			"name": "createReferralLedger",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x9a9911cf"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "referralLedgerId",
+					"type": "uint256"
+				}
+			],
+			"name": "deleteReferralLedger",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xa9b51c2f"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "referralLedgerId",
+					"type": "uint256"
+				}
+			],
+			"name": "getReferralLedger",
+			"outputs": [
+				{
+					"name": "revenueLedgerId",
+					"type": "uint256"
+				},
+				{
+					"name": "amount",
+					"type": "uint256"
+				},
+				{
+					"name": "fromReferralUser",
+					"type": "string"
+				},
+				{
+					"name": "toReferralUser",
+					"type": "string"
+				},
+				{
+					"name": "isAccount",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x27527d71"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "referralLedgerId",
+					"type": "uint256"
+				},
+				{
+					"name": "toAddr",
+					"type": "address"
+				}
+			],
+			"name": "referralShare",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x996c3840"
+		}
+	],
+	"version": {
+		"191106-14:06:58": "0x7DE0843EB32950c7174939cF15eFFBe8D6069608",
+		"191106-15:27:35": "0xbb74bcdffC0Ba5Ea5E792A3fA6a0c7c0231129b4",
+		"191106-16:15:50": "0xdc3410326f1e858058F94547832f67ff4a03d08A"
+	}
+}

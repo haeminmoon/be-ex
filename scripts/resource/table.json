@@ -1,0 +1,14 @@
+{
+  "prod": {
+    "dynamoDB_table_user": "prod-celeb-user",
+    "dynamoDB_table_campaign": "prod-celeb-campaign",
+    "dynamoDB_table_notice": "prod-celeb-notice",
+    "dynamoDB_table_notification": "prod-celeb-notification"
+  },
+  "dev": {
+    "dynamoDB_table_user": "dev-celeb-user",
+    "dynamoDB_table_campaign": "dev-celeb-campaign",
+    "dynamoDB_table_notice": "dev-celeb-notice",
+    "dynamoDB_table_notification": "dev-celeb-notification"
+  }
+}

@@ -1,0 +1,384 @@
+# for sign in
+tx_createUser:
+  handler: functions/transaction/post.tx_createUser
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_create_user
+        method: post
+        cors: true
+  timeout: 30
+  warmup: true
+
+# for sign in
+tx_createBusiness:
+  handler: functions/transaction/post.tx_createBusiness
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_create_business
+        method: post
+        cors: true
+  timeout: 30
+  warmup: true
+
+
+tx_createCampaign:
+  handler: functions/transaction/post.tx_createCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_create_campaign
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+tx_paymentOfFee_createCampaign:
+  handler: functions/transaction/post.tx_paymentOfFee_createCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_payment_of_fee_create_campaign
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+
+tx_updateCampaign:
+  handler: functions/transaction/post.tx_updateCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_campaign
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+
+tx_applyCampaign:
+  handler: functions/transaction/post.tx_applyCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_apply_campaign
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+tx_selectMainInfluencer:
+  handler: functions/transaction/post.tx_selectMainInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_select_main_influencer
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+
+tx_updateEndSale:
+  handler: functions/transaction/post.tx_updateEndSale
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_end_sale
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+tx_updateCampaignNotice:
+  handler: functions/transaction/post.tx_updateCampaignNotice
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_campaign_notice
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+tx_createNotice:
+  handler: functions/transaction/post.tx_createNotice
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_create_notice
+        method: post
+        cors: true
+        authorizer: 
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 30
+  warmup: true
+
+tx_settleData:
+  handler: functions/transaction/post.tx_settleData
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_settle_data
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_referralSettleData:
+  handler: functions/transaction/post.tx_referralSettleData
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_referral_settle_data
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_sendReward:
+  handler: functions/transaction/post.tx_sendReward
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_send_reward
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 900
+  warmup: true
+
+tx_pushHistory:
+  handler: functions/transaction/post.tx_pushHistory
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_push_history
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 900
+  warmup: true
+
+tx_createWallet:
+  handler: functions/transaction/post.tx_createWallet
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_create_wallet
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 900
+  warmup: true
+
+
+tx_updateCancelInfluencer:
+  handler: functions/transaction/post.tx_updateCancelInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_cancel_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_updateStopInfluencer:
+  handler: functions/transaction/post.tx_updateStopInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_stop_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_updateHiddenInfluencer:
+  handler: functions/transaction/post.tx_updateHiddenInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_hidden_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_deleteCampaign:
+  handler: functions/transaction/post.tx_deleteCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_delete_campaign
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_cancelMainInfluencer:
+  handler: functions/transaction/post.tx_cancelMainInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_cancel_main_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_updatePostingUrl:
+  handler: functions/transaction/post.tx_updatePostingUrl
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_posting_url
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+tx_updateIsConfirm:
+  handler: functions/transaction/post.tx_updateIsConfirm
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: transaction/tx_update_is_confirm
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  timeout: 400
+  warmup: true
+
+# tx_completeMission:
+#   handler: functions/transaction/post.tx_completeMission
+#   layers:
+#     - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+#     - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+#   events:
+#     - http:
+#         path: transaction/tx_complete_mission
+#         method: post
+#         cors: true
+#         authorizer:
+#           type: CUSTOM
+#           authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+#   timeout: 400
+#   warmup: true
+
+# tx_requestMissionReward:
+#   handler: functions/transaction/post.tx_requestMissionReward
+#   layers:
+#     - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+#     - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+#   events:
+#     - http:
+#         path: transaction/tx_request_mission_reward
+#         method: post
+#         cors: true
+#         authorizer:
+#           type: CUSTOM
+#           authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+#   timeout: 400
+#   warmup: true

@@ -1,0 +1,26 @@
+{
+  "name": "celeb-api-bApp",
+  "version": "1.0.0",
+  "description": "SPIN bApp related API Service for Celeb Plus Project on AWS Lambda",
+  "scripts": {
+    "deploy": "sls deploy -v --stage $STAGE",
+    "remove": "sls remove -v --stage $STAGE",
+    "start": "sls offline start",
+    "test": "jest ./test/*.spec.js --json --outputFile=testResult.json"
+  },
+  "author": "",
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "ffp-js": "^0.0.21",
+    "jest": "^24.8.0",
+    "moment": "^2.24.0",
+    "serverless-offline": "^4.7.1",
+    "serverless-offline-ssm": "^3.1.0",
+    "serverless-plugin-warmup": "^4.8.0"
+  },
+  "dependencies": {
+    "caver-js": "^1.0.9",
+    "moment-timezone": "^0.5.27",
+    "serverless-plugin-split-stacks": "^1.9.2"
+  }
+}

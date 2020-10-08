@@ -1,0 +1,706 @@
+{
+	"address": "0x64b1472e9ACc0198903D2af0Fa74a9Fe3C456E21",
+	"abi": [
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isWt",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x0308fecf"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getUintStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x08acb556"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getStringStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "string"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x1a84fbb8"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getBoolStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x1c58c8bb"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isAdmin",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x24d7806c"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "setAuthStorage",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x378b5d39"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isInfluencer",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x42f00a92"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "isSupplier",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x46336542"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getBytesStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bytes"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x773cdbd7"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "nodeId",
+					"type": "uint256"
+				}
+			],
+			"name": "doesNodeExist",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x820254a2"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "doesListExist",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x9081fd01"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getNodes",
+			"outputs": [
+				{
+					"name": "nodes",
+					"type": "uint256[]"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x93840d0f"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				},
+				{
+					"name": "nodeId",
+					"type": "uint256"
+				},
+				{
+					"name": "dir",
+					"type": "bool"
+				}
+			],
+			"name": "getAdjacent",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				},
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x9a481f4e"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getAddressStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xb93a5b5e"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "getAuthStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xb95ca819"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getLinkedListSize",
+			"outputs": [
+				{
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xc7db8da2"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "contractName",
+					"type": "string"
+				},
+				{
+					"name": "key",
+					"type": "bytes32"
+				}
+			],
+			"name": "getIntStorage",
+			"outputs": [
+				{
+					"name": "",
+					"type": "int256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xe8ad272c"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "proxy",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0xec556889"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"name": "revenueRatio",
+					"type": "uint256"
+				},
+				{
+					"indexed": true,
+					"name": "productId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"name": "startAt",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"name": "endAt",
+					"type": "uint256"
+				}
+			],
+			"name": "CampaignCreated",
+			"type": "event",
+			"signature": "0x3c9cc4cf1382fab18fdff599f27ca437251c65cd749dffa32f1e5f49fe19612f"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"name": "updatedAt",
+					"type": "uint256"
+				}
+			],
+			"name": "CampaignUpdated",
+			"type": "event",
+			"signature": "0x982ea7e7dc4036d0cfa5ed228249cc7d634ad38662e3fa9ce58deb9a10d01554"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"name": "deletedAt",
+					"type": "uint256"
+				}
+			],
+			"name": "CampaignDeleted",
+			"type": "event",
+			"signature": "0x005588a5934c610d650a12f9c735c733ff5b39cf5c2be2c3e72b4f28f97d5803"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"name": "campaignType",
+					"type": "uint256"
+				},
+				{
+					"name": "productId",
+					"type": "uint256"
+				},
+				{
+					"name": "revenueRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "totalSupply",
+					"type": "uint256"
+				},
+				{
+					"name": "startAt",
+					"type": "uint256"
+				},
+				{
+					"name": "endAt",
+					"type": "uint256"
+				}
+			],
+			"name": "createCampaign",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x8b0a257e"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"name": "productId",
+					"type": "uint256"
+				},
+				{
+					"name": "revenueRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "totalSupply",
+					"type": "uint256"
+				},
+				{
+					"name": "startAt",
+					"type": "uint256"
+				},
+				{
+					"name": "endAt",
+					"type": "uint256"
+				}
+			],
+			"name": "updateCampaign",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xdf87b4bb"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				}
+			],
+			"name": "deleteCampaign",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x75970193"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"name": "influencerId",
+					"type": "uint256"
+				}
+			],
+			"name": "attendCampaign",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xb249a66f"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"name": "influencerId",
+					"type": "uint256"
+				}
+			],
+			"name": "cancelCampaign",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0x20689f0f"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				},
+				{
+					"name": "endAt",
+					"type": "uint256"
+				}
+			],
+			"name": "updateSaleEnd",
+			"outputs": [],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function",
+			"signature": "0xa72c36dd"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				}
+			],
+			"name": "getCampaign",
+			"outputs": [
+				{
+					"name": "campaignType",
+					"type": "uint256"
+				},
+				{
+					"name": "productId",
+					"type": "uint256"
+				},
+				{
+					"name": "revenueRatio",
+					"type": "uint256"
+				},
+				{
+					"name": "totalSupply",
+					"type": "uint256"
+				},
+				{
+					"name": "appliedInfluencerList",
+					"type": "uint256[]"
+				},
+				{
+					"name": "startAt",
+					"type": "uint256"
+				},
+				{
+					"name": "endAt",
+					"type": "uint256"
+				},
+				{
+					"name": "createdAt",
+					"type": "uint256"
+				},
+				{
+					"name": "writer",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x5598f8cc"
+		},
+		{
+			"constant": true,
+			"inputs": [
+				{
+					"name": "campaignId",
+					"type": "uint256"
+				}
+			],
+			"name": "isChangerbleCampaign",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function",
+			"signature": "0x486d457a"
+		}
+	],
+	"version": {
+		"191016-17:25:15": "0x271ee736B726815947383bBca1C74dC094368610",
+		"191104-18:01:23": "0x4AdCf32ab5AE6B9ca3dBB7801919408E1360DC95",
+		"191104-19:17:16": "0x574D526197f0124c4Ad166a5E12639614492bB06",
+		"191105-14:46:05": "0x43A6D68af02758959f3B57B97b6f5552e0D7ACF8",
+		"191118-11:04:35": "0x8c44851BC77B85c940F725eA77f6F3D6AA14B205",
+		"191125-11:32:56": "0x3201DC65b6C5F1e920F3ad52378345385a17B1E6",
+		"191125-12:08:23": "0xFE7d2d7C6Fef35Dcc6926087d6B182693e738D3e",
+		"191125-14:08:19": "0x547124D920A468f790AC6a18e2aC5A4289FA8E97",
+		"191127-16:58:20": "0x464C77EB10417E1C287cDEA9C763B6B5960E1D29",
+		"191127-17:00:36": "0x8717973a5090A7AD0CdbD713e5bEaABb58e7428A",
+		"191127-17:02:54": "0xD178F627B6746357ebc23CAcFECc2C209bA38a82"
+	}
+}

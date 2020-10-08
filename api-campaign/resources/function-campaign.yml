@@ -1,0 +1,370 @@
+# need amdin authroization
+createCampaign:
+  handler: functions/campaign/post.createCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/create_campaign
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getCampaign:
+  handler: functions/campaign/get.getCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getCampaignForMarketing:
+  handler: functions/campaign/get.getCampaignForMarketing
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_for_marketing
+        method: get
+        cors: true
+  warmup: true
+
+getCampaignListByUser:
+  handler: functions/campaign/get.getCampaignListByUser
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_list_by_user
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getCampaignList:
+  handler: functions/campaign/get.getCampaignList
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_list
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getCampaignListAfterAnnouncementDate:
+  handler: functions/campaign/get.getCampaignListAfterAnnouncementDate
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_list_after_announcement_date
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getCampaignListForMarketing:
+  handler: functions/campaign/get.getCampaignListForMarketing
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_list_for_marketing
+        method: get
+        cors: true
+  warmup: true
+
+getCampaignCount:
+  handler: functions/campaign/get.getCampaignCount
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_count
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getAppliedCampaignList:
+  handler: functions/campaign/get.getAppliedCampaignList
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_applied_campaign_list
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getAppliedCampaignCount:
+  handler: functions/campaign/get.getAppliedCampaignCount
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_applied_campaign_count
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getCampaignCountByUser:
+  handler: functions/campaign/get.getCampaignCountByUser
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_count_by_user
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+getCampaignId:
+  handler: functions/campaign/get.getCampaignId
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_id
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+checkAppointedCampaign:
+  handler: functions/campaign/get.checkAppointedCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/check_appointed_campaign
+        method: get
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+updateAppliedInfluencer:
+  handler: functions/campaign/post.updateAppliedInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_applied_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+updatePostingUrl:
+  handler: functions/campaign/post.updatePostingUrl
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_postingUrl
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+# need admin authorization
+updateSaleEnd:
+  handler: functions/campaign/post.updateSaleEnd
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_sale_end
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+# need admin authorization
+updateCancelInfluencer:
+  handler: functions/campaign/post.updateCancelInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_cancel_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+updateCampaign:
+  handler: functions/campaign/post.updateCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_campaign
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+# need admin authorization
+deleteCampaign:
+  handler: functions/campaign/post.deleteCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/delete_campaign
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+# open api
+getCampaignState:
+  handler: functions/campaign/get.getCampaignState
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/get_campaign_state
+        method: get
+        cors: true
+  warmup: true
+
+updateCancelMainInfluencer:
+  handler: functions/campaign/post.updateCancelMainInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_cancel_main_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+updateIsConfirm:
+  handler: functions/campaign/post.updateIsConfirm
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_is_confirm
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+updateAppliedInfluencersAttributes:
+  handler: functions/campaign/post.updateAppliedInfluencersAttributes
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_applied_influencers_attributes
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+updateRewardPriceInfluencer:
+  handler: functions/campaign/post.updateRewardPriceInfluencer
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/update_reward_price_influencer
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true
+
+rejectCampaign:
+  handler: functions/campaign/post.rejectCampaign
+  layers:
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.libs}}
+    - ${cf:${self:custom.layer.stack}-${self:custom.stage}.${self:custom.layer.name.nodejs}}
+  events:
+    - http:
+        path: campaign/reject_campaign
+        method: post
+        cors: true
+        authorizer:
+          type: CUSTOM
+          authorizerId: ${self:custom.lambdaCognitoAuthorizer.userTokenAuthorizerId}
+  warmup: true

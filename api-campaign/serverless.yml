@@ -1,0 +1,107 @@
+service: celeb-api-campaign
+
+plugins:
+  - serverless-offline-ssm
+  - serverless-offline
+  - serverless-plugin-warmup
+  - serverless-plugin-split-stacks
+
+custom:  
+  stage: ${opt:stage, 'dev'}
+  # db: ${file(../env.yml):${self:custom.stage}.db, file(../env.yml):dev.db}
+  layer: 
+    stack: ${file(../env.yml):layer.stack}
+    name:
+      libs: ${file(../env.yml):layer.name.libs}
+      nodejs: ${file(../env.yml):layer.name.nodejs}
+  lambdaCognitoAuthorizer: 
+    userTokenAuthorizerId: !ImportValue ${self:custom.stage}-celeb-User-Token-AuthorizerId
+  warmup:
+    name:  ${self:custom.stage}-celeb-api-campaign-warmer
+    events:
+      - schedule:
+          rate: cron(0/10 * * * ? *)
+    payload:
+      source: 'campaign-warmer'
+  serverless-offline:
+    port: ${file(../credentials.yml):port.campaign}
+  serverless-offline-ssm: 
+    /dev/celebdb/host: ${file(../credentials.yml):ssm-keys.dev.celebdb.host}
+    /dev/celebdb/user: ${file(../credentials.yml):ssm-keys.dev.celebdb.user}
+    /dev/celebdb/password: ${file(../credentials.yml):ssm-keys.dev.celebdb.password}
+    /dev/celebdb/database: ${file(../credentials.yml):ssm-keys.dev.celebdb.database}
+    /staging/celebdb/host: ${file(../credentials.yml):ssm-keys.staging.celebdb.host}
+    /staging/celebdb/user: ${file(../credentials.yml):ssm-keys.staging.celebdb.user}
+    /staging/celebdb/password: ${file(../credentials.yml):ssm-keys.staging.celebdb.password}
+    /staging/celebdb/database: ${file(../credentials.yml):ssm-keys.staging.celebdb.database}
+    /prod/celebdb/host: ${file(../credentials.yml):ssm-keys.prod.celebdb.host}
+    /prod/celebdb/user: ${file(../credentials.yml):ssm-keys.prod.celebdb.user}
+    /prod/celebdb/password: ${file(../credentials.yml):ssm-keys.prod.celebdb.password}
+    /prod/celebdb/database: ${file(../credentials.yml):ssm-keys.prod.celebdb.database}
+  vpc: ${file(../env.yml):${self:custom.stage}.vpc, file(../env.yml):dev.vpc}
+  splitStacks:
+    perFunction: false
+    perType: false
+    perGroupFunction: false
+  s3path:
+    bucket: ${file(../env.yml):${self:custom.stage}.s3prefixPath.bucket}
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${self:custom.stage}
+  region: ap-northeast-2
+  vpc:
+    securityGroupIds:
+      - ${self:custom.vpc.securityGroupIds}
+    subnetIds:
+      - ${self:custom.vpc.subnetId1}
+      - ${self:custom.vpc.subnetId2}
+
+  apiGateway:
+    restApiId:
+      'Fn::ImportValue': ${self:custom.stage}-celeb-ApiGatewayRestApiId
+    restApiRootResourceId:
+      'Fn::ImportValue': ${self:custom.stage}-celeb-ApiGatewayRestApiRootResourceId
+
+  # These environment variables are made available to our functions under process.env. /prod/celebdb/host
+  environment:
+    DB_HOST: ${ssm:/${self:custom.stage}/celebdb/host~true}
+    DB_USER: ${ssm:/${self:custom.stage}/celebdb/user~true}
+    DB_PASSWORD: ${ssm:/${self:custom.stage}/celebdb/password~true}
+    DB_DATABASE: ${ssm:/${self:custom.stage}/celebdb/database~true}
+    STAGE: ${self:custom.stage}
+    BUCKET: ${self:custom.s3path.bucket}
+
+  # you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - cognito-sync:*
+        - cognito-identity:*
+      Resource: arn:aws:cognito-identity:*:*:*
+    - Effect: Allow
+      Action:
+        - cognito-idp:*
+      Resource: arn:aws:cognito-idp:*:*:*
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - ec2:CreateNetworkInterface
+        - ec2:DescribeNetworkInterfaces
+        - ec2:DetachNetworkInterface
+        - ec2:DeleteNetworkInterface
+      Resource: "*"
+
+package:
+  exclude:
+    # - ./node_modules/**
+    - README.md
+    - yarn.lock
+    - package-lock.json
+
+functions:
+  - ${file(./resources/function-campaign.yml)}

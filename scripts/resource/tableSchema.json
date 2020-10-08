@@ -1,0 +1,80 @@
+{
+  "tables": [
+    {
+      "table_name": "campaign",
+      "id": { "constraints": "SERIAL PRIMARY KEY" },
+      "type": { "type": "text" },
+      "gender": { "type": "text" },
+      "name": { "type": "text" },
+      "product_code": { "type": "text" },
+      "revenue_ratio": { "type": "text" },
+      "limit_count": { "type": "text" },
+      "main_img": { "type": "text" },
+      "campaign_description": { "type": "text" },
+      "mission_description": { "type": "text" },
+      "offer": { "type": "text" },
+      "hash_tag": { "type": "text" },
+      "guide": { "type": "text" },
+      "main_influencer": { "type": "text" },
+      "notice": { "type": "text" },
+      "state": { "type": "text" },
+      "apply_start_date": { "type": "timestamp with time zone" },
+      "apply_end_date": { "type": "timestamp with time zone" },
+      "shipping_date": { "type": "timestamp with time zone" },
+      "sale_start_date": { "type": "timestamp with time zone" },
+      "sale_end_date": { "type": "timestamp with time zone" },
+      "created_at": { "type": "timestamp with time zone", "constraints": "NOT NULL", "default": "now()" },
+      "updated_at": { "type": "timestamp with time zone" },
+      "applied_influencers": { "type": "jsonb", "default": "'[]'::jsonb" },
+      "product_price": { "type": "integer" },
+      "total_supply": { "type": "text" },
+      "on_chain": { "type": "boolean", "default": true }
+    },
+    {
+      "table_name": "notice",
+      "id": { "constraints": "SERIAL PRIMARY KEY" },
+      "title": { "type": "text" },
+      "content": { "type": "text" },
+      "created_at": { "type": "timestamp with time zone", "constraints": "NOT NULL", "default": "now()" },
+      "updated_at": { "type": "timestamp with time zone" },
+      "writer": { "type": "text" }
+    },
+    {
+      "table_name": "notification",
+      "id": { "constraints": "SERIAL PRIMARY KEY" },
+      "content": { "type": "text" },
+      "icon": { "type": "text" },
+      "property": { "type": "text" },
+      "property_value": { "type": "text" },
+      "created_at": { "type": "timestamp with time zone", "constraints": "NOT NULL", "default": "now()" },
+      "updated_at": { "type": "timestamp with time zone" },
+      "receiver": { "type": "jsonb", "default": "'[]'::jsonb" }
+    },
+    {
+      "table_name": "revenue_ledger",
+      "id": { "constraints": "SERIAL PRIMARY KEY" },
+      "campaign_id": { "type": "integer" },
+      "influencer_id": { "type": "integer" },
+      "sales_amount": { "type": "integer" },
+      "sales_price": { "type": "integer" },
+      "created_at": { "type": "timestamp with time zone", "constraints": "NOT NULL", "default": "now()" },
+      "profit":{
+        "type": "jsonb",
+        "default": "DEFAULT '{ \"fiat\": 0, \"spin\": 0, \"total\": 0 }'::jsonb"
+      },
+      "is_accounted": { "type": "boolean", "default": false }
+    },
+    {
+      "table_name": "users",
+      "id": { "constraints": "SERIAL PRIMARY KEY" },
+      "email": { "type": "character varying(30)", "constraints": "NOT NULL UNIQUE" },
+      "user_info": { "type": "jsonb", "default": "'{}'::jsonb" },
+      "wallet_info": { "type": "jsonb", "default": "'{}'::jsonb" },
+      "terms_agree": { "type": "jsonb", "default": "'{}'::jsonb" },
+      "auth": { "type": "character varying(30)" },
+      "is_active": { "type": "boolean", "default": false },
+      "created_at": { "type": "timestamp with time zone", "constraints": "NOT NULL", "default": "now()" },
+      "updated_at": { "type": "timestamp with time zone" }
+    }
+  ]
+}
